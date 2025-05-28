@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="scripts.js" defer></script>
+    <title>Career Development Plan</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Sidebar -->
+      <aside class="side-bar">
+        <div id="side-logo-div">
+          <img src="assets/logo-light.svg" alt="Kanban Logo" id="logo" />
+        </div>
+        <div class="boards-nav-links-div">
+          <h4>ALL BOARDS (1)</h4>
+          <button class="board-btn">
+            <span>Launch Career</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Layout -->
+      <main id="layout">
+        <header>
+          <div class="header-name-div">
+            <img
+              src="assets/favicon.svg"
+              alt="Mobile Logo"
+              class="logo-mobile"
+            />
+            <h2 id="header-board-name">Launch Career</h2>
+          </div>
+          <button class="add-task-btn" id="openModalBtn">
+            <span class="desktop-label">+ Add New Task</span>
+            <span class="mobile-label">+</span>
+          </button>
+        </header>
+
+        <div class="container">
+          <div class="card-column-main">
+            <!-- Columns injected dynamically by JS -->
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal -->
+    <dialog id="taskModal" class="task-dialog">
+      <form method="dialog" class="task-form" id="taskForm">
+        <div class="modal-header">
+          <h3 class="modal-title">Add New Task</h3>
+          <button type="button" class="close-btn" aria-label="Close">
+            &times;
+          </button>
+        </div>
+
+        <label for="task-title">Title</label>
+        <div class="input-container">
+          <input
+            type="text"
+            id="task-title"
+            placeholder="e.g. Take chilled break"
+            required
+          />
+          <div class="custom-error">Please fill out this field</div>
+        </div>
+
+        <label for="task-desc">Description</label>
+        <div class="input-container">
+          <textarea
+            id="task-desc"
+            placeholder="e.g. Pet your dog, have a cup of coffee..."
+            required
+          ></textarea>
+          <div class="custom-error">Please fill out this field</div>
+        </div>
+
+        <label for="task-status">Status</label>
+        <select id="task-status" required>
+          <option value="todo">todo</option>
+          <option value="doing">doing</option>
+          <option value="done">done</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Create Task</button>
+      </form>
+    </dialog>
+  </body>
+</html>
