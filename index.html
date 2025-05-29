@@ -19,15 +19,50 @@
       <!-- Sidebar -->
       <aside class="side-bar">
         <div id="side-logo-div">
-          <img src="assets/logo-light.svg" alt="Kanban Logo" id="logo" />
+          <img
+            src="assets/logo-light.svg"
+            alt="Kanban Logo"
+            id="logo"
+            class="logo-light"
+          />
+          <img
+            src="assets/logo-dark.svg"
+            alt="Kanban Logo"
+            id="logo-dark"
+            class="logo-dark"
+            style="display: none"
+          />
         </div>
+
         <div class="boards-nav-links-div">
           <h4>ALL BOARDS (1)</h4>
           <button class="board-btn">
             <span>Launch Career</span>
           </button>
+          <!-- Additional board buttons would go here -->
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="theme-toggle">
+            <span class="theme-icon">🌞</span>
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle-checkbox" />
+              <span class="slider round"></span>
+            </label>
+            <span class="theme-icon">🌚</span>
+          </div>
+
+          <button class="hide-sidebar-btn">
+            <span class="hide-icon">🚫</span>
+            <span>Hide Sidebar</span>
+          </button>
         </div>
       </aside>
+
+      <!-- Hidden sidebar toggle button (shown when sidebar is hidden) -->
+      <button class="show-sidebar-btn" style="display: none">
+        <span class="show-icon">👀</span>
+      </button>
 
       <!-- Main Layout -->
       <main id="layout">

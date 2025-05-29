@@ -494,6 +494,161 @@ dialog {
   background-color: rgba(99, 95, 199, 0.25);
 }
 
+/* Add these new styles to your CSS file */
+
+/* Sidebar Toggle Styles */
+.hide-sidebar-btn {
+  background-color: #f4f7fd;
+  color: #635fc7;
+  border: none;
+  border-radius: 0 100px 100px 0;
+  height: 48px;
+  width: 100%;
+  max-width: 276px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 1.5rem;
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+.hide-sidebar-btn:hover {
+  background-color: rgba(99, 95, 199, 0.1);
+}
+
+.show-sidebar-btn {
+  position: fixed;
+  bottom: 32px;
+  left: 0;
+  width: 56px;
+  height: 48px;
+  background-color: #635fc7;
+  border: none;
+  border-radius: 0 100px 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.show-sidebar-btn:hover {
+  background-color: #8471f2;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+  max-width: 276px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #635fc7;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #635fc7;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  margin-top: auto;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  --primary-color: #2b2c37;
+  --secondary-color: #20212c;
+  --primary-font-color: #ffffff;
+  --secondary-font-color: #828fa3;
+  background-color: var(--secondary-color);
+}
+
+body.dark-mode .side-bar {
+  background-color: var(--primary-color);
+  border-right-color: #3e3f4e;
+}
+
+body.dark-mode .logo-light {
+  display: none;
+}
+
+body.dark-mode .logo-dark {
+  display: block;
+}
+
+/* Mobile Sidebar Styles */
+@media screen and (max-width: 1023px) {
+  .side-bar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .side-bar.visible {
+    left: 0;
+  }
+
+  .logo-mobile {
+    cursor: pointer;
+  }
+}
+
 /* ======================== Responsive Styles ======================== */
 
 @media screen and (max-width: 1023px) {

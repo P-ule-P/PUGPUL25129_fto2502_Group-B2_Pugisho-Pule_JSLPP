@@ -1,6 +1,10 @@
 import { loadTasks, saveLocalTasks } from "./scripts/utils/storage.js";
 import { renderTasks } from "./scripts/UI/renderTasks.js";
 import { setupModal } from "./scripts/UI/modal.js";
+import {
+  setupSidebarToggle,
+  setupThemeToggle,
+} from "./scripts/UI/sidebarToggleFunctionality.js";
 
 // DOM Elements
 const loadingEl = document.getElementById("loading-indicator");
@@ -15,23 +19,23 @@ const retryBtn = document.getElementById("retry-button");
 async function initializeApp() {
   try {
     // Show loading state
-    loadingEl.style.display = "flex"; // Use display instead of hidden attribute
-    container.style.display = "none"; // Hide container while loading
-    errorEl.style.display = "none"; // Ensure error is hidden
+    loadingEl.style.display = "flex";
+    container.style.display = "none";
+    errorEl.style.display = "none";
 
     // Load tasks
     const tasks = await loadTasks();
 
     // Render UI
     renderTasks(tasks);
-    setupModal();
+    setupModal(); // Modal setup stays here if it depends on tasks
 
     // Update network status
     updateNetworkStatus();
 
     // Hide loading, show content
     loadingEl.style.display = "none";
-    container.style.display = "block"; // Or "flex" depending on your layout needs
+    container.style.display = "block";
   } catch (error) {
     handleInitializationError(error);
   }
@@ -45,7 +49,6 @@ function handleInitializationError(error) {
   loadingEl.style.display = "none";
   container.style.display = "none";
   errorEl.style.display = "block";
-
   document.getElementById("error-detail").textContent =
     error.message || "Failed to load tasks";
 }
@@ -67,13 +70,18 @@ function setupEventListeners() {
 
   // Retry button
   retryBtn?.addEventListener("click", () => {
-    errorEl.hidden = true;
+    errorEl.style.display = "none";
     initializeApp();
   });
 }
 
 // Start the application
 document.addEventListener("DOMContentLoaded", () => {
+  // Setup all event listeners and static UI components first
   setupEventListeners();
+  setupSidebarToggle();
+  setupThemeToggle();
+
+  // Then initialize the dynamic app logic
   initializeApp();
 });
