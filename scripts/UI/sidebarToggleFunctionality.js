@@ -59,3 +59,46 @@ export function setupThemeToggle() {
     logoDark.style.display = "block";
   }
 }
+
+// Mobile Menu Functionality (added exactly as requested)
+export function setupMobileMenu() {
+  const mobileLogo = document.querySelector(".logo-mobile");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeButton = document.getElementById("close-mobile-menu");
+  const themeToggle = document.getElementById("theme-toggle-checkbox");
+  const mobileThemeToggle = document.getElementById(
+    "mobile-theme-toggle-checkbox"
+  );
+  const backdrop = document.getElementById("mobile-menu-backdrop");
+
+  // Toggle mobile menu
+  mobileLogo?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.add("visible");
+    backdrop.classList.add("visible");
+    document.body.style.overflow = "hidden";
+  });
+
+  // Close mobile menu
+  const closeMenu = () => {
+    mobileMenu.classList.remove("visible");
+    backdrop.classList.remove("visible");
+    document.body.style.overflow = "";
+  };
+
+  closeButton?.addEventListener("click", closeMenu);
+
+  // Sync theme toggles
+  themeToggle?.addEventListener("change", (e) => {
+    if (mobileThemeToggle) {
+      mobileThemeToggle.checked = e.target.checked;
+    }
+  });
+
+  mobileThemeToggle?.addEventListener("change", (e) => {
+    if (themeToggle) {
+      themeToggle.checked = e.target.checked;
+      themeToggle.dispatchEvent(new Event("change"));
+    }
+  });
+}

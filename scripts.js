@@ -4,6 +4,7 @@ import { setupModal } from "./scripts/UI/modal.js";
 import {
   setupSidebarToggle,
   setupThemeToggle,
+  setupMobileMenu, // Import the new function
 } from "./scripts/UI/sidebarToggleFunctionality.js";
 
 // DOM Elements
@@ -28,7 +29,7 @@ async function initializeApp() {
 
     // Render UI
     renderTasks(tasks);
-    setupModal(); // Modal setup stays here if it depends on tasks
+    setupModal();
 
     // Update network status
     updateNetworkStatus();
@@ -77,11 +78,11 @@ function setupEventListeners() {
 
 // Start the application
 document.addEventListener("DOMContentLoaded", () => {
-  // Setup all event listeners and static UI components first
   setupEventListeners();
+  initializeApp();
+
+  // Initialize sidebar functionality
   setupSidebarToggle();
   setupThemeToggle();
-
-  // Then initialize the dynamic app logic
-  initializeApp();
+  setupMobileMenu(); // Add this line to activate mobile menu
 });

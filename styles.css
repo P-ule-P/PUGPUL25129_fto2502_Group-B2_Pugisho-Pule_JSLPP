@@ -821,3 +821,80 @@ body.dark-mode .logo-dark {
     width: 100%;
   }
 }
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  position: fixed;
+  top: 96px; /* Height of your header */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px); /* Leaves 16px space on each side */
+  max-width: 480px; /* Maximum width */
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 16px;
+  height: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-header {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+}
+
+.close-mobile-menu {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #ea5555;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#boardButton {
+  width: 100%;
+  justify-content: center;
+  margin-left: -16px;
+}
+
+/* Dark mode styles */
+body.dark-mode .mobile-menu {
+  background-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999; /* Below menu but above other content */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+}
