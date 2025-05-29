@@ -1,156 +1,142 @@
-/* ========================
-   Global & Root Variables
-======================== */
-* {
-  box-sizing: border-box; /* Ensures padding and border are included in total element size */
-}
+/* ======================== Global & Variables ======================== */
 
 :root {
   --primary-color: #ffffff;
   --secondary-color: #f4f7fd;
-  --primary-font-color: #000000;
+  --primary-font-color: #000112;
   --secondary-font-color: #828fa3;
-  --primary-btn-color: #635fc7;
-  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
-  --sidebar-width: 300px; /* Sidebar fixed width */
+  --primary-box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1015);
+  --primary-radius: 8px;
 }
 
-/* ================
-   Base Elements
-================ */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex; /* Allow layout to span horizontally */
+  font-size: 1rem;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+  display: flex;
   flex-direction: row;
   width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  background-color: var(--secondary-color);
-  font-size: 1rem; /* Base font size for rem scaling */
 }
 
-/* ================
-   Sidebar Layout
-================ */
+/* ======================== Sidebar ======================== */
+
 .side-bar {
   display: flex;
   flex-direction: column;
+  width: 300px;
   background-color: var(--primary-color);
-  border-right: 1px solid #e4ebfa; /* Light divider */
-  width: var(--sidebar-width);
+  border-right: 1px solid #e4ebfa;
   height: 100vh;
 }
 
 #side-logo-div {
-  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  margin: 33px 113px 54px 34px;
   display: flex;
   justify-content: flex-start;
 }
 
 #logo {
-  width: 100%; /* Make logo responsive within container */
+  width: 100%;
+  max-width: 150px;
 }
 
 .boards-nav-links-div {
   display: flex;
+  text-align: start;
   flex-direction: column;
-  color: var(--primary-font-color);
-}
-
-#headline-sidepanel {
-  padding: 0 12px 0 50px; /* Aligns section content from left and right */
 }
 
 h4 {
-  color: var(--secondary-font-color);
   font-size: 0.75rem;
-  letter-spacing: 0.125rem; /* Makes heading more spaced */
+  margin-left: 40px;
+  letter-spacing: 0.125rem;
+  color: var(--secondary-font-color);
 }
 
 .board-btn {
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between icon and text */
-  background-color: var(--primary-btn-color);
+  background-color: #635fc7;
   color: #fff;
   border: none;
-  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  border-radius: 0 100px 100px 0;
   height: 48px;
-  width: 276px;
-  padding: 28px 12px 28px 50px;
+  width: 100%;
+  max-width: 276px;
   font-size: 0.9375rem;
   font-weight: bold;
   cursor: pointer;
-  overflow: hidden; /* Prevents overflowed text/icons from showing */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 1.5rem;
 }
 
-/* ===============
-   Main Layout
-================ */
-#layout {
-  flex: 1; /* Fills remaining space beside sidebar */
-  overflow-x: hidden; /* Prevent horizontal scroll */
+/* ======================== Layout ======================== */
+
+.layout {
+  display: flex;
   width: 100%;
 }
 
-/* ===============
-   Header Section
-================ */
+#layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ======================== Header ======================== */
+
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  padding: 0 2rem;
   background-color: var(--primary-color);
   color: var(--primary-font-color);
-  height: 96px;
-  padding: 0 35px 0 30px;
   border-bottom: 1px solid #e4ebfa;
-  width: 100%;
-  font-size: 1.875rem;
-  font-weight: 600;
-}
-
-.header-name-div {
-  display: flex;
-  align-items: center;
 }
 
 .logo-mobile {
-  display: none; /* Hidden on desktop; shown on smaller screens */
+  display: none;
 }
 
-/* ===============
-   Board Columns
-================ */
+#header-board-name {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ======================== Columns ======================== */
+
 .container {
   display: flex;
   flex-direction: column;
-  padding-left: 35px;
-  box-sizing: border-box;
+  padding: 2rem;
+  width: 60%;
 }
 
 .card-column-main {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 304px)
-  ); /* 3 columns with min size */
-  gap: 8px; /* Space between columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .column-div {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 12px;
 }
 
 .column-head-div {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between dot and column title */
+  gap: 10px;
 }
 
 .columnHeader {
@@ -160,11 +146,10 @@ header {
   margin: 0;
 }
 
-/* Status Dots */
 .dot {
   height: 15px;
   width: 15px;
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%;
   display: inline-block;
 }
 
@@ -180,212 +165,157 @@ header {
   background-color: #219c90;
 }
 
-/* ===============
-   Task Cards
-================ */
+/* ======================== Tasks ======================== */
+
 .tasks-container {
-  display: flex;
-  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
 }
 
-.task-div {
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  width: 100%;
-  height: 60px;
+.tasks-container li {
   background-color: var(--primary-color);
   color: var(--primary-font-color);
-  border-radius: 12px;
+  border-radius: 0.5rem;
   box-shadow: var(--primary-box-shadow);
-  cursor: pointer; /* Indicate it's clickable */
-  margin-bottom: 20px;
-  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
-/* ===============
-   Headings
-================ */
-h2 {
-  font-size: 1.5rem;
-  margin: 0;
-}
+/* ======================== Modal ======================== */
 
-/* ===============
-   Modal Styles
-================ */
-/* Remove default dialog styles */
 dialog {
   position: fixed;
-
   border: none;
   padding: 0;
   margin: 0;
   background: none;
 }
 
-/* Style the modal box */
-#task-modal::backdrop {
+#taskModal::backdrop {
   background: rgba(0, 0, 0, 0.3);
 }
 
-#task-modal {
-  top: 40%;
+#taskModal {
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -50%);
+  border: none;
   border-radius: 8px;
   width: 90%;
   max-width: 600px;
-  padding: 24px;
+  padding: 2rem;
   background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  /*font-family: "Plus Jakarta Sans", sans-serif;*/
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-/* Header */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
-.modal-header h3 {
-  margin: 0;
+.modal-title {
   font-size: 1.125rem;
+  font-weight: bold;
 }
 
 .close-btn {
   background: none;
   border: none;
-  font-size: 2.5rem;
-  line-height: 1;
-  cursor: pointer;
+  font-size: 2rem;
   color: #ea5555;
-  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
+  cursor: pointer;
 }
 
-.close-btn:hover {
-  transform: scale(1.15);
-  font-weight: 600;
-}
-
-.close-btn:focus {
-  outline: none;
-}
-
-/* Form elements */
-form label {
+.task-form label {
   display: block;
-  font-weight: 600;
-  font-size: 0.75rem;
-  margin-top: 12px;
-  margin-bottom: 4px;
-  color: #828fa3;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--secondary-font-color);
 }
 
-form input,
-form textarea,
-form select {
+.task-form input,
+.task-form textarea,
+.task-form select {
   width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #828fa3;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
   border-radius: 4px;
+  border: 1px solid #ccc;
   font-family: inherit;
-  font-size: 0.8125em;
+  font-size: 0.9rem;
   resize: vertical;
 }
 
-form select {
-  appearance: none; /* Remove native arrow */
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
-    no-repeat right 0.75rem center;
-
-  background-size: 1.4rem;
-  padding-right: 1rem;
-}
-
-#add-new-task-btn {
-  background-color: var(--primary-btn-color);
-  color: white;
-  border-radius: 30px;
-  border: 0;
-  font-size: 16px;
-  padding: 18px;
-  padding-left: 35px;
-  padding-right: 35px;
-  font-weight: 600;
+.add-task-btn,
+.submit-btn {
+  background-color: #635fc7;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
   cursor: pointer;
-  margin-right: 20px;
-}
-
-/* New Task Modal Window */
-
-.modal-window {
-  /* border: 5px solid red; */
+  font-size: 0.9rem;
   display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
-  gap: 20px;
-  background-color: var(--primary-color);
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 10px;
-
-  z-index: 3;
-  transition: all 0.3s ease-in;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .submit-btn {
-  background-color: var(--primary-btn-color);
-  color: white;
-  border-radius: 30px;
-  border: 0;
-  font-size: 16px;
-  padding: 14px;
-  padding-left: 35px;
-  padding-right: 35px;
-  font-weight: 600;
-  cursor: pointer;
-  flex-grow: 1; /* Allows the button to grow and fill the space */
-  margin: 5px 0; /* Optional: adds a margin between buttons */
-}
-
-textarea {
-  font-size: 16px;
-  color: black;
-  height: 90px;
+  width: 100%;
+  margin-top: 1.5rem;
   padding: 10px;
-  border-radius: 4px;
-  resize: vertical;
+  display: flex;
+  justify-content: center;
 }
 
-/* ========================
-   Responsive Styles
-======================== */
+/* Custom Hover Validation Message */
+.task-form .input-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
 
-/******** Tablets ********/
+.task-form .custom-error {
+  position: absolute;
+  width: 220px;
+  height: 48px;
+  background: white;
+  color: #828fa3;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px 0px rgba(54, 78, 126, 0.25);
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.task-form .custom-error::before {
+  content: "❗";
+  color: #ea5555;
+  font-size: 1.2rem;
+}
+
+/* Show error ONLY on hover of empty required fields */
+.task-form input:required:hover:placeholder-shown + .custom-error,
+.task-form textarea:required:hover:placeholder-shown + .custom-error,
+.task-form input:invalid:hover + .custom-error,
+.task-form textarea:invalid:hover + .custom-error {
+  opacity: 1;
+}
+
+/* ======================== Responsive Styles ======================== */
+
 @media screen and (max-width: 1023px) {
   .side-bar {
-    display: none; /* Hide sidebar on tablets and smaller */
-  }
-
-  .side-bar.show-sidebar {
-    display: flex !important;
-    position: fixed; /* Overlay on top of page */
-    height: auto;
-  }
-
-  #side-logo-div {
     display: none;
   }
 
@@ -396,85 +326,59 @@ textarea {
     margin-right: 10px;
   }
 
-  body {
-    font-size: 0.8rem;
-  }
-
-  .board-btn {
-    font-size: 0.8rem;
-    padding-left: 15px;
-    margin-right: 15px;
-    font-weight: 700;
-  }
-
   .container {
-    padding: 0;
-    width: 100%;
-    align-items: center; /* Center columns on smaller screens */
-  }
-
-  .card-column-main {
-    grid-template-columns: repeat(2, minmax(0, 360px));
-    gap: 8px;
+    padding: 1rem;
   }
 
   header {
-    height: 64px;
-    padding: 0 10px 0 18px;
-    border: none;
+    padding: 0 1rem;
   }
 
   #header-board-name {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
-  .task-div {
-    width: 100%;
+  .card-column-main {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
-  .columnHeader {
-    font-size: 0.75rem;
-  }
-
-  .dot {
-    height: 8px;
-    width: 8px;
-  }
-
-  .column-head-div {
-    gap: 8px;
-  }
-
-  .column-div {
-    width: 100%;
+  .task-dialog {
+    max-width: 90%;
   }
 }
 
-/******** Mobile ********/
-@media screen and (max-width: 576px) {
-  .card-column-main {
-    grid-template-columns: minmax(
-      0,
-      380px
-    ); /* Stack columns in single column */
+.mobile-label {
+  display: none;
+}
+
+/* ======================== Mobile Phones ======================== */
+
+@media screen and (max-width: 768px) {
+  #header-board-name {
+    display: none;
   }
 
-  .column-div {
-    padding: 24px;
+  .desktop-label {
+    display: none;
   }
 
-  #add-new-task-btn {
-    font-size: 0;
-    padding: 12px;
+  .mobile-label {
+    display: inline;
+    font-size: 1.5rem;
   }
 
-  #add-new-task-btn::before {
-    content: "+";
-    font-size: 18px;
-    font-weight: 800;
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 0;
-    padding-bottom: 0;
+  .add-task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  .container {
+    width: 100%;
   }
 }
