@@ -9,12 +9,24 @@ export function setupModal() {
   const titleInput = document.getElementById("task-title");
   const descInput = document.getElementById("task-desc");
   const statusSelect = document.getElementById("task-status");
-  const submitBtn = form.querySelector(".submit-btn");
+  const createTaskBtn = document.getElementById("createTaskBtn");
+  const saveChangesBtn = document.getElementById("saveChangesBtn");
+  const deleteBtn = document.getElementById("deleteTaskBtn");
+  const modalTitle = modal.querySelector(".modal-title");
+
+  // Confirmation dialog elements
+  const confirmDialog = document.getElementById("confirmDialog");
+  const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+  const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
 
   // Open modal for new task
   openBtn.addEventListener("click", () => {
     form.reset();
     statusSelect.value = "todo";
+    modalTitle.textContent = "Add New Task";
+    createTaskBtn.style.display = "block";
+    saveChangesBtn.style.display = "none";
+    deleteBtn.style.display = "none";
     modal.showModal();
   });
 
@@ -35,6 +47,10 @@ export function setupModal() {
       descInput.value = task.description;
       statusSelect.value = task.status;
       form.dataset.taskId = taskId;
+      modalTitle.textContent = "Edit Task";
+      createTaskBtn.style.display = "none";
+      saveChangesBtn.style.display = "block";
+      deleteBtn.style.display = "block";
       modal.showModal();
     }
   });
@@ -54,6 +70,9 @@ export function setupModal() {
     }
 
     try {
+      const submitBtn = form.querySelector(
+        ".submit-btn:not([style*='display: none'])"
+      );
       submitBtn.disabled = true;
       submitBtn.textContent = "Saving...";
 
@@ -88,9 +107,40 @@ export function setupModal() {
       console.error("Error saving task:", error);
       alert("Failed to save task");
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Create Task";
+      const activeSubmitBtn = form.querySelector(
+        '.submit-btn:not([style*="display: none"])'
+      );
+      activeSubmitBtn.disabled = false;
+      activeSubmitBtn.textContent = form.dataset.taskId
+        ? "Save Changes"
+        : "Create Task";
       delete form.dataset.taskId;
     }
+  });
+
+  // Delete task functionality
+  deleteBtn.addEventListener("click", () => {
+    confirmDialog.showModal();
+  });
+
+  // Confirm deletion
+  confirmDeleteBtn.addEventListener("click", () => {
+    const taskId = Number(form.dataset.taskId);
+    if (taskId) {
+      const tasks = getLocalTasks() || [];
+      const updatedTasks = tasks.filter((task) => task.id !== taskId);
+
+      saveLocalTasks(updatedTasks);
+      renderTasks(updatedTasks);
+      modal.close();
+      confirmDialog.close();
+      form.reset();
+      delete form.dataset.taskId;
+    }
+  });
+
+  // Cancel deletion
+  cancelDeleteBtn.addEventListener("click", () => {
+    confirmDialog.close();
   });
 }
