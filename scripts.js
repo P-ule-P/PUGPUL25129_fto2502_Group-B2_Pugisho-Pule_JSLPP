@@ -1,21 +1,79 @@
-import { initialTasks } from "./initialData.js";
-import { loadTasks, saveTasks } from "./scripts/utilis/storage.js";
+import { loadTasks, saveLocalTasks } from "./scripts/utils/storage.js";
 import { renderTasks } from "./scripts/UI/renderTasks.js";
 import { setupModal } from "./scripts/UI/modal.js";
 
+// DOM Elements
+const loadingEl = document.getElementById("loading-indicator");
+const errorEl = document.getElementById("error-message");
+const offlineEl = document.getElementById("offline-alert");
+const container = document.querySelector(".container");
+const retryBtn = document.getElementById("retry-button");
+
 /**
- * Initializes the application on DOMContentLoaded.
- *
- * - Loads tasks from localStorage if available, otherwise uses initial data.
- * - Saves loaded tasks to localStorage (if not already present).
- * - Renders the task board based on current task list.
- * - Sets up modal functionality for creating and editing tasks.
- *
- * @returns {void}
+ * Initializes the application
  */
+async function initializeApp() {
+  try {
+    // Show loading state
+    loadingEl.style.display = "flex"; // Use display instead of hidden attribute
+    container.style.display = "none"; // Hide container while loading
+    errorEl.style.display = "none"; // Ensure error is hidden
+
+    // Load tasks
+    const tasks = await loadTasks();
+
+    // Render UI
+    renderTasks(tasks);
+    setupModal();
+
+    // Update network status
+    updateNetworkStatus();
+
+    // Hide loading, show content
+    loadingEl.style.display = "none";
+    container.style.display = "block"; // Or "flex" depending on your layout needs
+  } catch (error) {
+    handleInitializationError(error);
+  }
+}
+
+/**
+ * Handles initialization errors
+ */
+function handleInitializationError(error) {
+  console.error("App initialization failed:", error);
+  loadingEl.style.display = "none";
+  container.style.display = "none";
+  errorEl.style.display = "block";
+
+  document.getElementById("error-detail").textContent =
+    error.message || "Failed to load tasks";
+}
+
+/**
+ * Updates network status UI
+ */
+function updateNetworkStatus() {
+  offlineEl.hidden = navigator.onLine;
+}
+
+/**
+ * Sets up event listeners
+ */
+function setupEventListeners() {
+  // Network status changes
+  window.addEventListener("online", updateNetworkStatus);
+  window.addEventListener("offline", updateNetworkStatus);
+
+  // Retry button
+  retryBtn?.addEventListener("click", () => {
+    errorEl.hidden = true;
+    initializeApp();
+  });
+}
+
+// Start the application
 document.addEventListener("DOMContentLoaded", () => {
-  const stored = loadTasks(initialTasks); // Load tasks from storage or fallback
-  renderTasks(stored); // Render the task board
-  saveTasks(stored); // Ensure localStorage is initialized
-  setupModal(); // Set up task modal behavior
+  setupEventListeners();
+  initializeApp();
 });

@@ -46,22 +46,22 @@
           </button>
         </header>
 
-        <!-- Loading Indicator -->
-        <div
-          id="loading-indicator"
-          class="loading-indicator"
-          style="display: none"
-        >
+        <div id="loading-indicator" class="loading-indicator" hidden>
           <div class="spinner"></div>
           <p>Loading your tasks...</p>
         </div>
 
-        <!-- Error Message Container -->
-        <div
-          id="error-message"
-          class="error-message"
-          style="display: none"
-        ></div>
+        <!-- Enhanced Error Message -->
+        <div id="error-message" class="error-message" hidden>
+          <h3>Error Loading Tasks</h3>
+          <p id="error-detail"></p>
+          <button id="retry-button" class="retry-btn">Try Again</button>
+        </div>
+
+        <!-- Offline Indicator -->
+        <div id="offline-alert" class="offline-indicator" hidden>
+          You're currently offline. Changes will be saved locally.
+        </div>
 
         <div class="container">
           <div class="card-column-main">
