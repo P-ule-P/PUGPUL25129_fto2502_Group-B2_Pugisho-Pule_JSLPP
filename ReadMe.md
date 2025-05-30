@@ -34,7 +34,7 @@ This app is a **fully interactive Kanban task board** built with **JavaScript, H
 - Tasks can be created with:
   - Title
   - Description
-  - Status (To Do, Doing, Done)
+  - Status (ToDo🔵, Doing🟣, Done🟢)
 - **Editing** a task allows updating its content and status.
 - Tasks can be **deleted** via a confirmation dialog.
 
@@ -75,7 +75,7 @@ This app is a **fully interactive Kanban task board** built with **JavaScript, H
 
 1. Visit the website via Netlify:
    ```bash
-   git clone https://github.com/yourusername/career-dev-plan.git
+   https://pugishokanbanboardapp.netlify.app/
    ```
 2. Browse the website and start achieving goals
 
@@ -138,3 +138,5 @@ The app will automatically:
 ✅ User authentication
 
 ✅ Sync with a backend database (instead of just localStorage)
+
+---
