@@ -1,10 +1,10 @@
-# Career Development Plan 🎓
+# Kanban Board App 🎓
 
 ---
 
 ## Project Description 🧾
 
-A simple, JavaScript-driven Kanban board tailored for monitoring career growth milestones. It presents tasks in a clear visual layout across three workflow stages—🔵 TODO, 🟣 DOING, and 🟢 DONE—using interactive cards and a modal-based editing system. Built with vanilla JavaScript, it features local storage persistence, form validation, and a mobile-responsive design without external dependencies.
+This app is a **fully interactive Kanban task board** built with **JavaScript, HTML, and CSS**. It allows users to view, create, edit, and delete tasks across different workflow stages. The app also integrates local storage, API data fetching, responsive design, and a dark/light theme toggle.
 
 ---
 
@@ -22,61 +22,119 @@ A simple, JavaScript-driven Kanban board tailored for monitoring career growth m
 
 ## Features 🛠️
 
-##### ✅ Task Visualization
+### 📥 Fetching & Saving Tasks
 
-- Add new tasks via modal form with title, description, and status selection
-- Tasks persist in browser's local storage
-- Real-time task count per column
-- Color-coded status indicators (blue, purple, green)
+- Tasks are **initially fetched from a remote API**.
+- Data is then **persisted locally** using `localStorage` for offline use and performance.
+- On first load (or reload), tasks are fetched and stored locally.
 
-##### ✅ Interactive UI
+### 📝 Create, Edit & Delete Tasks
 
-- Clean modal interface with form validation
-- Responsive design for all screen sizes
-- Mobile-optimized header with compact add button
-- Visual feedback for required fields
+- Click the **“+ Add Task”** button to open the modal form.
+- Tasks can be created with:
+  - Title
+  - Description
+  - Status (To Do, Doing, Done)
+- **Editing** a task allows updating its content and status.
+- Tasks can be **deleted** via a confirmation dialog.
 
-##### ✅ Data Persistence
+### 🖼️ Modal Interactions
 
-- Automatic saving to local storage
-- Loads previous state on page refresh
-- Fallback to initial demo tasks if no data exists
+- Modal appears when creating or editing a task.
+- The modal supports:
+  - Full keyboard and mouse interaction
+  - Smooth closing and cleanup
+  - Dynamic button visibility depending on task state
+
+### 🌓 Light/Dark Mode Toggle
+
+- A toggle switch is provided to enable **dark mode** or revert to **light mode**.
+- The current theme is saved in local storage and persisted on reload.
+- Theme toggle is available in both **desktop and mobile menu**.
+
+### 📱 Responsive Layout
+
+- Fully responsive layout:
+  - **Sidebar collapses on smaller screens**
+  - **Mobile navigation menu** is accessible with a backdrop
+  - Font and element sizes adjust for readability on all devices
+
+### 📂 Sidebar Navigation
+
+- Toggle sidebar open/closed with dedicated buttons.
+- Supports:
+  - Desktop show/hide toggle
+  - Mobile menu integration with backdrop
+- Sidebar state is remembered in `localStorage`.
 
 ---
 
 ## Setup Instructions 🧩
 
-1. Clone or download the repository
-2. Open `index.html` in any modern browser
-3. The app will automatically:
-   - Load saved tasks from local storage OR
-   - Initialize with demo tasks if first visit
-4. No build tools or dependencies required
+### Installation
+
+1. Visit the website via Netlify:
+   ```bash
+   git clone https://github.com/yourusername/career-dev-plan.git
+   ```
+2. Browse the website and start achieving goals
+
+## First Run
+
+The app will automatically:
+
+- Attempt to fetch tasks from the API
+
+- Fall back to local storage if offline
+
+- Initialize with empty state if no data exists
+
+- No build tools or dependencies required
 
 ---
 
 ## Usage Instructions 🪄
 
-### Adding Tasks ➕
+### General Access
 
-1. Click "+ Add New Task" button (desktop) or "+" (mobile)
-2. Fill in the form:
-   - Title (required)
-   - Description (required)
-   - Select status from dropdown
-3. Click "Create Task" to save
+1. **Open the app in your browser** (via the provided website url).
+2. The app will fetch tasks from the API and store them locally.
 
-### Viewing Tasks 📺
+### Managing Tasks
 
-- Tasks automatically organize into columns by status
-- Column headers show current task count
-- Color dots indicate status type
+| **Action**    | **Desktop**              | **Mobile**               |
+| ------------- | ------------------------ | ------------------------ |
+| Add Task      | Click `+ Add New Task`   | Tap `+` button           |
+| Edit Task     | Click any task card      | Tap any task card        |
+| Delete Task   | Edit → `Delete` button   | Edit → `Delete` button   |
+| Change Status | Edit → `Status` dropdown | Edit → `Status` dropdown |
+
+### UI Controls
+
+| **Feature**    | **How to Access**                                                  |
+| -------------- | ------------------------------------------------------------------ |
+| Sidebar Toggle | 🖥️ Desktop: Hide/Show buttons<br>📱 Mobile: Tap the logo in header |
+| Dark Mode      | Use the toggle switch in the sidebar or mobile menu                |
+| Mobile Menu    | 📱 Tap the mobile logo (top-left of header)                        |
+
+### Offline Usage
+
+- Works fully offline after initial load
+
+- Changes sync to local storage automatically
+
+- Network status indicator in bottom-right
 
 ---
 
-## Future Enhancements 🚀
+## 📖 Future Enhancements
 
-- Drag-and-drop task reordering
-- Task editing functionality
-- Multiple board support
-- Dark mode toggle
+✅ Drag and drop between columns
+
+✅ Subtasks support
+
+✅ Task priority or due dates
+
+✅ User authentication
+
+✅ Sync with a backend database (instead of just localStorage)
