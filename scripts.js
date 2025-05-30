@@ -15,7 +15,16 @@ const container = document.querySelector(".container");
 const retryBtn = document.getElementById("retry-button");
 
 /**
- * Initializes the application
+ * Initializes the application by:
+ * 1. Showing loading state
+ * 2. Loading tasks from storage
+ * 3. Rendering the UI
+ * 4. Setting up modal functionality
+ * 5. Updating network status
+ * 6. Transitioning to ready state
+ * @async
+ * @function initializeApp
+ * @throws {Error} When task loading fails
  */
 async function initializeApp() {
   try {
@@ -43,7 +52,13 @@ async function initializeApp() {
 }
 
 /**
- * Handles initialization errors
+ * Handles application initialization errors by:
+ * 1. Logging the error
+ * 2. Hiding loading indicator
+ * 3. Showing error message
+ * 4. Providing error details
+ * @function handleInitializationError
+ * @param {Error} error - The error that occurred during initialization
  */
 function handleInitializationError(error) {
   console.error("App initialization failed:", error);
@@ -55,14 +70,19 @@ function handleInitializationError(error) {
 }
 
 /**
- * Updates network status UI
+ * Updates the network status indicator based on navigator.onLine
+ * Shows/hides the offline alert accordingly
+ * @function updateNetworkStatus
  */
 function updateNetworkStatus() {
   offlineEl.hidden = navigator.onLine;
 }
 
 /**
- * Sets up event listeners
+ * Sets up global event listeners for:
+ * 1. Network status changes (online/offline)
+ * 2. Retry button click
+ * @function setupEventListeners
  */
 function setupEventListeners() {
   // Network status changes
@@ -76,7 +96,13 @@ function setupEventListeners() {
   });
 }
 
-// Start the application
+/**
+ * Main application entry point that:
+ * 1. Waits for DOM content to load
+ * 2. Sets up event listeners
+ * 3. Initializes the application
+ * 4. Sets up sidebar and theme functionality
+ */
 document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
   initializeApp();
@@ -84,5 +110,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize sidebar functionality
   setupSidebarToggle();
   setupThemeToggle();
-  setupMobileMenu(); // Add this line to activate mobile menu
+  setupMobileMenu();
 });

@@ -1,9 +1,10 @@
 const API_URL = "https://jsl-kanban-api.vercel.app/";
 
 /**
- * Fetches tasks from the API
- * @returns {Promise<Array>}
- * @throws {Error}
+ * Fetches tasks from the remote API
+ * @async
+ * @returns {Promise<Array<Object>>} Array of task objects
+ * @throws {Error} When network request fails or server responds with error
  */
 export async function fetchTasks() {
   try {
@@ -19,8 +20,8 @@ export async function fetchTasks() {
 }
 
 /**
- * Gets tasks from localStorage
- * @returns {Array|null}
+ * Retrieves tasks from localStorage
+ * @returns {Array<Object>|null} Parsed task array or null if not found
  */
 export function getLocalTasks() {
   const tasksJson = localStorage.getItem("tasks");
@@ -29,15 +30,16 @@ export function getLocalTasks() {
 
 /**
  * Saves tasks to localStorage
- * @param {Array} tasks
+ * @param {Array<Object>} tasks - Array of task objects to save
  */
 export function saveLocalTasks(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 /**
- * Loads tasks (API first, falls back to local)
- * @returns {Promise<Array>}
+ * Loads tasks with network-first strategy (falls back to localStorage)
+ * @async
+ * @returns {Promise<Array<Object>>} Array of task objects
  */
 export async function loadTasks() {
   // Try API first if online

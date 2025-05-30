@@ -779,6 +779,9 @@ body.dark-mode .logo-dark {
   .side-bar {
     display: none;
   }
+  .show-sidebar-btn {
+    display: none !important;
+  }
 
   .logo-mobile {
     display: block;

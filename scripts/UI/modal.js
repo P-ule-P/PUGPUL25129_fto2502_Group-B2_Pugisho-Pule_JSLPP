@@ -1,6 +1,10 @@
 import { saveLocalTasks, getLocalTasks } from "../utils/storage.js";
 import { renderTasks } from "./renderTasks.js";
 
+/**
+ * Initializes and manages the task modal dialog functionality
+ * Includes creating, editing, and deleting tasks
+ */
 export function setupModal() {
   const modal = document.getElementById("taskModal");
   const form = document.getElementById("taskForm");
@@ -37,7 +41,7 @@ export function setupModal() {
   document.addEventListener("click", (e) => {
     const taskElement = e.target.closest(".tasks-container li");
     if (!taskElement) return;
-
+    // Get tasks from local storage and find the clicked task
     const tasks = getLocalTasks();
     const taskId = Number(taskElement.dataset.taskId);
     const task = tasks.find((t) => t.id === taskId);

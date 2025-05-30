@@ -1,6 +1,6 @@
 /**
- * Renders tasks in their respective columns
- * @param {Array} tasks
+ * Renders tasks in their respective columns on the board
+ * @param {Array<Object>} tasks - Array of task objects to render
  */
 export function renderTasks(tasks = []) {
   const container = document.querySelector(".card-column-main");

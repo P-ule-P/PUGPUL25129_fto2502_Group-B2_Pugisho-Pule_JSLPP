@@ -1,4 +1,9 @@
-// Sidebar Toggle
+/**
+ * Sets up the sidebar toggle functionality for both desktop and mobile views.
+ * Handles showing/hiding the sidebar and persists the state in localStorage.
+ * @function setupSidebarToggle
+ * @exports setupSidebarToggle
+ */
 export function setupSidebarToggle() {
   const sidebar = document.querySelector(".side-bar");
   const hideSidebarBtn = document.querySelector(".hide-sidebar-btn");
@@ -23,14 +28,20 @@ export function setupSidebarToggle() {
     sidebar.classList.toggle("visible");
   });
 
-  // Initialize state
+  // Initialize sidebar state from localStorage
   if (localStorage.getItem("sidebarHidden") === "true") {
     sidebar.style.display = "none";
     showSidebarBtn.style.display = "flex";
   }
 }
 
-// Theme Toggle
+/**
+ * Sets up the theme toggle functionality between light and dark modes.
+ * Handles theme switching, logo visibility, and updates modal styles.
+ * Persists the theme preference in localStorage.
+ * @function setupThemeToggle
+ * @exports setupThemeToggle
+ */
 export function setupThemeToggle() {
   const themeToggle = document.getElementById("theme-toggle-checkbox");
   const logoLight = document.getElementById("logo");
@@ -40,6 +51,10 @@ export function setupThemeToggle() {
   // Only proceed if elements exist
   if (!themeToggle || !logoLight || !logoDark) return;
 
+  /**
+   * Updates all modal styles to match the current theme.
+   * @param {boolean} isDarkMode - Whether dark mode is enabled
+   */
   const updateModalStyles = (isDarkMode) => {
     const modals = document.querySelectorAll(".task-dialog, .confirm-dialog");
     modals.forEach((modal) => {
@@ -75,7 +90,15 @@ export function setupThemeToggle() {
   }
 }
 
-// Mobile Menu Functionality
+/**
+ * Sets up mobile menu functionality including:
+ * - Opening/closing the menu
+ * - Handling backdrop clicks
+ * - Syncing theme toggle between desktop and mobile
+ * - Auto-closing on desktop resize
+ * @function setupMobileMenu
+ * @exports setupMobileMenu
+ */
 export function setupMobileMenu() {
   const mobileLogo = document.querySelector(".logo-mobile");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -94,7 +117,9 @@ export function setupMobileMenu() {
     document.body.style.overflow = "hidden";
   });
 
-  // Close mobile menu
+  /**
+   * Closes the mobile menu and resets styles.
+   */
   const closeMenu = () => {
     mobileMenu.classList.remove("visible");
     backdrop.classList.remove("visible");
