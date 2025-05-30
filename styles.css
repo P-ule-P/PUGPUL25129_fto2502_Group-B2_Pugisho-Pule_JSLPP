@@ -287,7 +287,6 @@ dialog {
   padding: 0.85rem 1.5rem;
 }
 
-/* Custom Hover Validation Message */
 .task-form .input-container {
   position: relative;
   margin-bottom: 1.5rem;
@@ -325,8 +324,8 @@ dialog {
 
 body.dark-mode .task-dialog,
 body.dark-mode .confirm-dialog {
-  background-color: #2b2c37 !important; /* Dark background */
-  color: #ffffff; /* White text */
+  background-color: #2b2c37 !important;
+  color: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -335,17 +334,16 @@ body.dark-mode .modal-header h3 {
   color: white !important;
 }
 
-/* Keep all other text colors as before */
 body.dark-mode .task-form label,
 body.dark-mode .custom-error {
-  color: inherit; /* Maintain original colors */
+  color: inherit;
 }
 
 body.dark-mode .task-form input,
 body.dark-mode .task-form textarea,
 body.dark-mode .task-form select {
-  background-color: white !important; /* White input backgrounds */
-  color: #000112; /* Dark text in inputs */
+  background-color: white !important;
+  color: #000112;
 }
 
 body.dark-mode .close-btn {
@@ -358,7 +356,7 @@ body.dark-mode .custom-error {
 
 /* Loading Indicator Styles */
 .loading-indicator {
-  display: none; /* Start hidden */
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -386,7 +384,7 @@ body.dark-mode .custom-error {
   }
 }
 
-/* Enhanced Error Message Styles */
+/* Error Message Styles */
 .error-message {
   background: #ffebee;
   border: 1px solid #ef5350;
@@ -431,8 +429,6 @@ body.dark-mode .custom-error {
   display: block;
 }
 
-/* Add these new styles at the end of your CSS file */
-
 /* Modal Actions */
 .modal-actions {
   display: flex;
@@ -475,8 +471,8 @@ body.dark-mode .custom-error {
   left: 50%;
   transform: translateX(-50%);
   margin-top: 20px;
-  width: calc(100% - 40px); /* Match modal width minus padding */
-  max-width: 500px; /* Match modal max-width */
+  width: calc(100% - 40px);
+  max-width: 500px;
   border: none;
   border-radius: var(--primary-radius);
   padding: 1.5rem;
@@ -526,8 +522,6 @@ body.dark-mode .custom-error {
 .cancel-btn:hover {
   background-color: rgba(99, 95, 199, 0.25);
 }
-
-/* Add these new styles to your CSS file */
 
 /* Sidebar Toggle Styles */
 .hide-sidebar-btn {
@@ -589,7 +583,7 @@ body.dark-mode .custom-error {
   background-color: var(--secondary-color);
   border-radius: 6px;
   max-width: 270px;
-  transform: translateX(8px); /* Pushes right by 8px */
+  transform: translateX(8px);
   width: 100%;
 }
 
@@ -638,14 +632,13 @@ input:checked + .slider:before {
   transform: translateX(20px);
 }
 
-/* Toggle Switch Container */
 .theme-toggle {
   background-color: var(--secondary-color);
   transition: background-color 0.3s ease;
 }
 
 body.dark-mode .theme-toggle {
-  background-color: #635fc7; /* Purple background in dark mode */
+  background-color: #635fc7;
 }
 
 /* Toggle Switch */
@@ -669,13 +662,13 @@ body.dark-mode .theme-toggle {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #635fc7; /* Purple in light mode */
+  background-color: #635fc7;
   transition: 0.4s;
   border-radius: 34px;
 }
 
 body.dark-mode .slider {
-  background-color: #000000; /* Black in dark mode */
+  background-color: #000000;
 }
 
 .slider:before {
@@ -691,14 +684,13 @@ body.dark-mode .slider {
 }
 
 input:checked + .slider {
-  background-color: #635fc7; /* Purple when checked (both modes) */
+  background-color: #635fc7;
 }
 
 input:checked + .slider:before {
   transform: translateX(20px);
 }
 
-/* Sidebar Footer */
 .sidebar-footer {
   margin-top: auto;
   padding-bottom: 2rem;
@@ -706,7 +698,6 @@ input:checked + .slider:before {
   flex-direction: column;
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
   --primary-color: #2b2c37;
   --secondary-color: #20212c;
@@ -728,7 +719,6 @@ body.dark-mode .hide-sidebar-btn:hover {
   background-color: #8471f2; /* Lighter purple on hover */
 }
 
-/* Dark mode toggle slider styles */
 body.dark-mode .slider {
   background-color: #000000; /* Black background for toggle */
 }
@@ -737,7 +727,6 @@ body.dark-mode .slider:before {
   background-color: white;
 }
 
-/* Keep the checked state purple */
 body.dark-mode input:checked + .slider {
   background-color: #635fc7;
 }
@@ -755,7 +744,6 @@ body.dark-mode .logo-dark {
   display: block !important;
 }
 
-/* Default logo visibility */
 .logo-light {
   display: block;
 }
@@ -764,7 +752,6 @@ body.dark-mode .logo-dark {
   display: none;
 }
 
-/* Dark mode logo switching */
 body.dark-mode .logo-light {
   display: none;
 }
@@ -869,14 +856,13 @@ body.dark-mode .logo-dark {
   }
 }
 
-/* Mobile Menu Styles */
 .mobile-menu {
   position: fixed;
-  top: 96px; /* Height of your header */
+  top: 96px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 32px); /* Leaves 16px space on each side */
-  max-width: 480px; /* Maximum width */
+  width: calc(100% - 32px);
+  max-width: 480px;
   background-color: var(--primary-color);
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -921,13 +907,11 @@ body.dark-mode .logo-dark {
   margin-left: -16px;
 }
 
-/* Dark mode styles */
 body.dark-mode .mobile-menu {
   background-color: var(--primary-color);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Mobile Menu Backdrop */
 .mobile-menu-backdrop {
   position: fixed;
   top: 0;
@@ -935,7 +919,7 @@ body.dark-mode .mobile-menu {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 999; /* Below menu but above other content */
+  z-index: 999;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;

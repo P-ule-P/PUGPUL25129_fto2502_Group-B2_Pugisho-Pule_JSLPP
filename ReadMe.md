@@ -6,6 +6,9 @@
 
 This app is a **fully interactive Kanban task board** built with **JavaScript, HTML, and CSS**. It allows users to view, create, edit, and delete tasks across different workflow stages. The app also integrates local storage, API data fetching, responsive design, and a dark/light theme toggle.
 
+Link to Presentation Video
+https://www.loom.com/share/b629ca5652ca4e5bb63b3ef04fb833ea?sid=e6a4e2c2-f393-4e8b-b645-dc4f8f4b182e
+
 ---
 
 ## Technologies Used 👨🏽‍💻
@@ -71,7 +74,7 @@ This app is a **fully interactive Kanban task board** built with **JavaScript, H
 
 ## Setup Instructions 🧩
 
-### Installation
+### Installation 🔗
 
 1. Visit the website via Netlify:
    ```bash
@@ -79,7 +82,7 @@ This app is a **fully interactive Kanban task board** built with **JavaScript, H
    ```
 2. Browse the website and start achieving goals
 
-## First Run
+## First Run 🧰
 
 The app will automatically:
 
@@ -95,12 +98,12 @@ The app will automatically:
 
 ## Usage Instructions 🪄
 
-### General Access
+### General Access 📬
 
 1. **Open the app in your browser** (via the provided website url).
 2. The app will fetch tasks from the API and store them locally.
 
-### Managing Tasks
+### Managing Tasks 🔄
 
 | **Action**    | **Desktop**              | **Mobile**               |
 | ------------- | ------------------------ | ------------------------ |
@@ -109,7 +112,7 @@ The app will automatically:
 | Delete Task   | Edit → `Delete` button   | Edit → `Delete` button   |
 | Change Status | Edit → `Status` dropdown | Edit → `Status` dropdown |
 
-### UI Controls
+### UI Controls ⚙️
 
 | **Feature**    | **How to Access**                                                  |
 | -------------- | ------------------------------------------------------------------ |
@@ -117,7 +120,7 @@ The app will automatically:
 | Dark Mode      | Use the toggle switch in the sidebar or mobile menu                |
 | Mobile Menu    | 📱 Tap the mobile logo (top-left of header)                        |
 
-### Offline Usage
+### Offline Usage 📡
 
 - Works fully offline after initial load
 
