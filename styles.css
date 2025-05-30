@@ -323,6 +323,39 @@ dialog {
   opacity: 1;
 }
 
+body.dark-mode .task-dialog,
+body.dark-mode .confirm-dialog {
+  background-color: #2b2c37 !important; /* Dark background */
+  color: #ffffff; /* White text */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .modal-title,
+body.dark-mode .modal-header h3 {
+  color: white !important;
+}
+
+/* Keep all other text colors as before */
+body.dark-mode .task-form label,
+body.dark-mode .custom-error {
+  color: inherit; /* Maintain original colors */
+}
+
+body.dark-mode .task-form input,
+body.dark-mode .task-form textarea,
+body.dark-mode .task-form select {
+  background-color: white !important; /* White input backgrounds */
+  color: #000112; /* Dark text in inputs */
+}
+
+body.dark-mode .close-btn {
+  color: #ea5555;
+}
+
+body.dark-mode .custom-error {
+  color: #000000;
+}
+
 /* Loading Indicator Styles */
 .loading-indicator {
   display: none; /* Start hidden */
@@ -780,6 +813,17 @@ body.dark-mode .logo-dark {
 }
 
 /* ======================== Mobile Phones ======================== */
+@media screen and (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .mobile-menu-backdrop {
+    display: none !important;
+  }
+}
 
 @media screen and (max-width: 768px) {
   #header-board-name {

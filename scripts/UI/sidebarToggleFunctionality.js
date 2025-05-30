@@ -40,6 +40,17 @@ export function setupThemeToggle() {
   // Only proceed if elements exist
   if (!themeToggle || !logoLight || !logoDark) return;
 
+  const updateModalStyles = (isDarkMode) => {
+    const modals = document.querySelectorAll(".task-dialog, .confirm-dialog");
+    modals.forEach((modal) => {
+      if (isDarkMode) {
+        modal.classList.add("dark-mode");
+      } else {
+        modal.classList.remove("dark-mode");
+      }
+    });
+  };
+
   // Theme change handler
   themeToggle.addEventListener("change", () => {
     const isDarkMode = themeToggle.checked;
@@ -49,6 +60,9 @@ export function setupThemeToggle() {
     // Toggle logos
     logoLight.style.display = isDarkMode ? "none" : "block";
     logoDark.style.display = isDarkMode ? "block" : "none";
+
+    // Update modal styles
+    updateModalStyles(isDarkMode);
   });
 
   // Initialize theme
@@ -57,10 +71,11 @@ export function setupThemeToggle() {
     document.body.classList.add("dark-mode");
     logoLight.style.display = "none";
     logoDark.style.display = "block";
+    updateModalStyles(true);
   }
 }
 
-// Mobile Menu Functionality (added exactly as requested)
+// Mobile Menu Functionality
 export function setupMobileMenu() {
   const mobileLogo = document.querySelector(".logo-mobile");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -87,6 +102,15 @@ export function setupMobileMenu() {
   };
 
   closeButton?.addEventListener("click", closeMenu);
+
+  // Close menu when resizing to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      mobileMenu.classList.remove("visible");
+      if (backdrop) backdrop.classList.remove("visible");
+      document.body.style.overflow = "";
+    }
+  });
 
   // Sync theme toggles
   themeToggle?.addEventListener("change", (e) => {
